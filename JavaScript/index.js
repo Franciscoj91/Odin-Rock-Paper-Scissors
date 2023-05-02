@@ -14,7 +14,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
+    
 
     if (playerSelection === computerSelection) {
         return "It's a tie!!!"
@@ -33,6 +33,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+
+
 function game() {
 
     let computerScore = 0;
@@ -41,7 +43,9 @@ function game() {
     //play a new game of 5 rounds
     for(let i=1; i <= 5; i++) {
         let condition = true;
-        let playerSelection = '';
+        let playerSelection;
+        let computerSelection;
+        let message;
         console.log(`this is round ${i}`);
 
         //ask for the player choice
@@ -49,13 +53,66 @@ function game() {
             playerSelection = prompt(`Round ${i} - Write your choice: Rock, Paper or Scissors`).toLowerCase();
             // validate that choice
             if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors'){
-                condition = false;
+                
+                computerSelection = getComputerChoice();
+                message = playRound(playerSelection, computerSelection);
+
+                switch (message) {
+                    case "It's a tie!!!":
+                        console.log(message);
+                        break;
+                    case "You lose! Paper beats Rock":
+                        computerScore++;
+                        console.log(message);
+                        console.log(`The score is: The computer - ${computerScore} points, You - ${playerScore} points`);
+                        condition = false;
+                        break;
+                    case "You win! Rock beats Scissors":
+                        playerScore++;
+                        console.log(message);
+                        console.log(`The score is: The computer - ${computerScore} points, You - ${playerScore} points`);
+                        condition = false;
+                        break;
+                    case "You win! Paper beats Rock":
+                        playerScore++;
+                        console.log(message);
+                        console.log(`The score is: The computer - ${computerScore} points, You - ${playerScore} points`);
+                        condition = false;
+                        break;
+                    case "You lose! Scissors beats Paper":
+                        computerScore++;
+                        console.log(message);
+                        console.log(`The score is: The computer - ${computerScore} points, You - ${playerScore} points`);
+                        condition = false;
+                        break;
+                    case "You lose! Rock beats scissors":
+                        computerScore++;
+                        console.log(message);
+                        console.log(`The score is: The computer - ${computerScore} points, You - ${playerScore} points`);
+                        condition = false;
+                        break;
+                    case "You win! Scissors beats Paper":
+                        playerScore++;
+                        console.log(message);
+                        console.log(`The score is: The computer - ${computerScore} points, You - ${playerScore} points`);
+                        condition = false;
+                        break;
+                    default:
+                        break;
+                }
+                
             }
         }
-
     }
 
-    return `The winner is...`;
+
+    //at the end of the game return the winner
+    if (computerScore > playerScore) {
+        return `The winner is... THE COMPUTER!!! with ${computerScore} points`;
+    }else {
+        return `The winner is...YOU!!! with ${playerScore} points`;
+    }
+
 }
 
 
@@ -68,5 +125,3 @@ function game() {
 // if it's a tie keep playing in the same round 
 
 //at the end of the round return the score
-
-//at the end of the game return the winner
