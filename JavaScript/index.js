@@ -32,3 +32,41 @@ function playRound(playerSelection, computerSelection) {
         return "You win! Scissors beats Paper";
     }
 }
+
+function game() {
+
+    let computerScore = 0;
+    let playerScore = 0;
+    
+    //play a new game of 5 rounds
+    for(let i=1; i <= 5; i++) {
+        let condition = true;
+        let playerSelection = '';
+        console.log(`this is round ${i}`);
+
+        //ask for the player choice
+        while (condition) {
+            playerSelection = prompt(`Round ${i} - Write your choice: Rock, Paper or Scissors`).toLowerCase();
+            // validate that choice
+            if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors'){
+                condition = false;
+            }
+        }
+
+    }
+
+    return `The winner is...`;
+}
+
+
+
+
+// if player win add a point to player score
+
+// if computer win add a point to computer score
+
+// if it's a tie keep playing in the same round 
+
+//at the end of the round return the score
+
+//at the end of the game return the winner
