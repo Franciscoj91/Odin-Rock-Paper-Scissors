@@ -34,8 +34,19 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
+let buttons = document.querySelectorAll('button');
 
-function game() {
+
+buttons.forEach( (button) => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.innerText.toLowerCase();
+        console.log(playRound(playerSelection, getComputerChoice()));
+    })
+})
+
+
+
+/* function game() {
 
     let computerScore = 0;
     let playerScore = 0;
@@ -113,8 +124,7 @@ function game() {
         return `The winner is...YOU!!! with ${playerScore} points`;
     }
 
-}
-
+} */
 
 
 
